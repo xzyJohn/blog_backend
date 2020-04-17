@@ -8,6 +8,7 @@ import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
 import lombok.Data;
 
 import java.time.LocalDateTime;
+import java.util.Date;
 
 /**
  * @Author: xzy
@@ -32,7 +33,7 @@ public class BaseEntity {
      * 创建时间
      */
     @TableField(fill = FieldFill.INSERT, updateStrategy = FieldStrategy.NOT_NULL)
-    private LocalDateTime createdDate;
+    private Date createdDate;
 
     /**
      * 最后修改人id
@@ -44,7 +45,7 @@ public class BaseEntity {
      * 最后修改时间
      */
     @TableField(fill = FieldFill.INSERT_UPDATE)
-    private LocalDateTime lastModifiedDate;
+    private Date lastModifiedDate;
 
     /**
      * 乐观锁
