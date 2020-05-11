@@ -5,6 +5,8 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.blog.modules.${package.ModuleName}.entity.${entity};
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import javax.annotation.Resource;
+import com.blog.modules.${package.ModuleName}.service.${entity}Service;
 <#if restControllerStyle>
 import org.springframework.web.bind.annotation.RestController;
 <#else>
@@ -34,6 +36,9 @@ public class ${table.controllerName} extends ${superControllerClass}<${entity}> 
 <#else>
 public class ${table.controllerName} {
 </#if>
+
+    @Resource
+    private ${entity}Service ${table.entityPath}Service;
 
     @Override
     @GetMapping
