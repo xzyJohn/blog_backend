@@ -1,4 +1,4 @@
-package com.blog.modules.generator;
+package com.blog.core.utils;
 
 import com.baomidou.mybatisplus.annotation.DbType;
 import com.baomidou.mybatisplus.annotation.IdType;
