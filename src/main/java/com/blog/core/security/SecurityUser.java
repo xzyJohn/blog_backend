@@ -6,6 +6,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 /**
  * @author xzy
@@ -19,10 +20,16 @@ public class SecurityUser implements UserDetails {
     private String password;
     private Boolean enabled;
     private Boolean locked;
+    private Set<GrantedAuthority> authorities;
+
+    public SecurityUser(String username,String password){
+        this.username = username;
+        this.password = password;
+    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return authorities;
     }
 
     @Override
