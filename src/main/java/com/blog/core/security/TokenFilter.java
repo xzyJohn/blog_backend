@@ -1,10 +1,7 @@
 package com.blog.core.security;
 
-import com.baomidou.mybatisplus.extension.api.R;
 import com.blog.config.SecurityProperties;
-import com.blog.core.exception.BadRequestException;
 import com.blog.core.utils.SpringContextHolder;
-import io.jsonwebtoken.ExpiredJwtException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;
@@ -29,20 +26,18 @@ import java.io.PrintWriter;
 public class TokenFilter extends GenericFilterBean {
 
     private final TokenProvider tokenProvider;
+
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
         String token = resolveToken(httpServletRequest);
         String requestRri = httpServletRequest.getRequestURI();
-        try {
-            if (StringUtils.hasText(token)&&this.tokenProvider.validateToken(token)) {
-                Authentication authentication = this.tokenProvider.getAuthentication(token);
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-            }else {
-                log.debug("no valid JWT token found, uri: {}", requestRri);
-            }
-        }catch (ExpiredJwtException e) {
-            log.error(e.getMessage());
+        if (StringUtils.hasText(token) && tokenProvider.validateToken(token)) {
+            Authentication authentication = tokenProvider.getAuthentication(token);
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            log.debug("set Authentication to security context for '{}', uri: {}", authentication.getName(), requestRri);
+        } else {
+            log.debug("no valid JWT token found, uri: {}", requestRri);
         }
         filterChain.doFilter(servletRequest, servletResponse);
     }

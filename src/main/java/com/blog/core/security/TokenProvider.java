@@ -1,6 +1,5 @@
 package com.blog.core.security;
 
-import cn.hutool.core.util.ObjectUtil;
 import com.blog.config.SecurityProperties;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
@@ -19,7 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import java.security.Key;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Date;
 import java.util.stream.Collectors;
 
@@ -58,7 +56,7 @@ public class TokenProvider implements InitializingBean {
                 .compact();
     }
 
-    public Authentication getAuthentication(String token) {
+    Authentication getAuthentication(String token) {
         Claims claims = Jwts.parser()
                 .setSigningKey(key)
                 .parseClaimsJws(token)
@@ -90,6 +88,14 @@ public class TokenProvider implements InitializingBean {
             e.printStackTrace();
         }
         return false;
+    }
+
+    public String getToken(HttpServletRequest request){
+        final String requestHeader = request.getHeader(properties.getHeader());
+        if (requestHeader != null && requestHeader.startsWith(properties.getTokenStartWith())) {
+            return requestHeader.substring(7);
+        }
+        return null;
     }
 
 }

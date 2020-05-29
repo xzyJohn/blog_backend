@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 public class UserDetailServiceImpl implements UserDetailsService {
     final UserService userService;
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User user;

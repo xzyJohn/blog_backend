@@ -4,6 +4,8 @@ import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.blog.modules.base.controller.BaseCrudController;
 import com.blog.modules.system.entity.User;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -15,7 +17,11 @@ import java.util.List;
  */
 @RestController
 @RequestMapping("/user")
+@RequiredArgsConstructor
 public class UserController extends BaseCrudController<User> {
+
+    private final PasswordEncoder passwordEncoder;
+
     @Override
     @GetMapping
     public R<List<User>> queryAll() {
@@ -39,6 +45,7 @@ public class UserController extends BaseCrudController<User> {
     @Override
     @PostMapping
     public R<User> create(@RequestBody User data) {
+        data.setPassword(passwordEncoder.encode(data.getPassword()));
         return super.create(data);
     }
 
