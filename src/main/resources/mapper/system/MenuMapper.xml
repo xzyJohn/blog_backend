@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.modules.system.mapper.MenuMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.blog.modules.system.entity.Menu">
+        <result column="id" property="id" />
+        <result column="created_by" property="createdBy" />
+        <result column="created_date" property="createdDate" />
+        <result column="last_modified_by" property="lastModifiedBy" />
+        <result column="last_modified_date" property="lastModifiedDate" />
+        <result column="version" property="version" />
+        <result column="name" property="name" />
+        <result column="type" property="type" />
+        <result column="title" property="title" />
+        <result column="seq_num" property="seqNum" />
+        <result column="icon" property="icon" />
+        <result column="path" property="path" />
+        <result column="status" property="status" />
+        <result column="parent_id" property="parentId" />
+        <result column="permission_code" property="permissionCode" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        created_by,
+        created_date,
+        last_modified_by,
+        last_modified_date,
+        version,
+        name, type, title, seq_num, icon, path, status, parent_id, permission_code
+    </sql>
+
+</mapper>

@@ -26,6 +26,7 @@ public class BaseEntity {
     /**
      * 创建人id
      */
+    @JsonSerialize(using= ToStringSerializer.class)
     @TableField(fill = FieldFill.INSERT, updateStrategy = FieldStrategy.NOT_NULL)
     private Long createdBy;
 
@@ -38,6 +39,7 @@ public class BaseEntity {
     /**
      * 最后修改人id
      */
+    @JsonSerialize(using= ToStringSerializer.class)
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Long lastModifiedBy;
 

@@ -5,8 +5,6 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
-import java.util.List;
-import java.util.Set;
 
 /**
  * @author xzy
@@ -18,9 +16,6 @@ public class SecurityUser implements UserDetails {
     private Long id;
     private String username;
     private String password;
-    private Boolean enabled;
-    private Boolean locked;
-    private Set<GrantedAuthority> authorities;
 
     public SecurityUser(String username,String password){
         this.username = username;
@@ -29,7 +24,7 @@ public class SecurityUser implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return authorities;
+        return null;
     }
 
     @Override
@@ -49,7 +44,7 @@ public class SecurityUser implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return !locked;
+        return true;
     }
 
     @Override
@@ -59,6 +54,6 @@ public class SecurityUser implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return enabled;
+        return true;
     }
 }
