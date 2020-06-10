@@ -19,4 +19,18 @@ public interface MenuService extends MyService<Menu> {
      */
     List<Menu> getMenuTree();
 
+    /**
+     * 根据菜单类型获取排序字段
+     * @param type 类型
+     * @param parentId 父菜单id
+     * @return
+     */
+    Integer getMenuSeqNum(Long parentId,Integer type);
+
+    /**
+     * 根据id删除菜单
+     * @param id
+     * @return
+     */
+    Boolean deleteById(Long id);
 }

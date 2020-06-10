@@ -88,7 +88,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .antMatchers(
                         "/auth/**",
-                        "/user/**"
+                        "/user/**",
+                        "/system/**"
                 ).permitAll()
                 // 所有请求都需要认证
                 .anyRequest().authenticated()

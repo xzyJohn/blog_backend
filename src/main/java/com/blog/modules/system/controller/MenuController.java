@@ -29,6 +29,12 @@ public class MenuController extends BaseCrudController<Menu> {
         return R.ok(tree);
     }
 
+    @GetMapping("/seq")
+    public R<Integer> menuSeqNum(@RequestParam(required = false) Long parentId,@RequestParam(required = false,defaultValue = "1") Integer type){
+        Integer seqNum = menuService.getMenuSeqNum(parentId,type);
+        return R.ok(seqNum);
+    }
+
     @Override
     @GetMapping
     public R<List<Menu>> queryAll() {
@@ -64,6 +70,7 @@ public class MenuController extends BaseCrudController<Menu> {
     @Override
     @DeleteMapping("/{id}")
     public R<Boolean> delete(@PathVariable Long id) {
-        return super.delete(id);
+        Boolean flag = menuService.deleteById(id);
+        return R.ok(flag);
     }
 }

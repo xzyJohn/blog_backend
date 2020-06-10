@@ -32,4 +32,17 @@
         name, type, title, seq_num, icon, path, status, parent_id, permission_code
     </sql>
 
+    <delete id="deleteByParentId">
+        DELETE FROM tbl_menu WHERE parent_id = #{parentId}
+    </delete>
+
+    <select id="getMenuSeqNum" resultType="java.lang.Integer">
+        SELECT seq_num FROM tbl_menu tm WHERE 1=1
+        AND tm.type = #{type}
+        <if test="parentId != null and parentId != null">
+            and tm.parent_id = #{parentId}
+        </if>
+        ORDER BY tm.seq_num DESC LIMIT 1
+    </select>
+
 </mapper>

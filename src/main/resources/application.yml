@@ -1,6 +1,11 @@
 spring:
   profiles:
     active: dev
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    timeout: 5000
 mybatis-plus:
   global-config:
     db-config:
