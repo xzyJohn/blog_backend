@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.blog.modules.system.mapper.RolePermissionMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.blog.modules.system.entity.RolePermission">
+        <result column="id" property="id" />
+        <result column="created_by" property="createdBy" />
+        <result column="created_date" property="createdDate" />
+        <result column="last_modified_by" property="lastModifiedBy" />
+        <result column="last_modified_date" property="lastModifiedDate" />
+        <result column="version" property="version" />
+        <result column="role_id" property="roleId" />
+        <result column="permission_id" property="permissionId" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id,
+        created_by,
+        created_date,
+        last_modified_by,
+        last_modified_date,
+        version,
+        role_id, permission_id
+    </sql>
+
+</mapper>
