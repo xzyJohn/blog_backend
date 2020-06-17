@@ -1,11 +1,14 @@
 package com.blog.modules.system.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.blog.modules.base.entity.BaseEntity;
 import com.baomidou.mybatisplus.annotation.Version;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
+
+import java.util.List;
 
 /**
  *
@@ -36,5 +39,10 @@ public class Role extends BaseEntity {
      */
     private String code;
 
+    @TableField(exist = false)
+    List<Long> permissionIds;
+
+    @TableField(exist = false)
+    List<Permission> permissions;
 
 }

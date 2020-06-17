@@ -46,18 +46,21 @@ public class RoleController extends BaseCrudController<Role> {
     @Override
     @PostMapping
     public R<Role> create(@RequestBody Role data) {
-        return super.create(data);
+        roleService.createRole(data);
+        return R.ok(data);
     }
 
     @Override
     @PutMapping
     public R<Role> update(@RequestBody Role data) {
-        return super.update(data);
+        roleService.updateRole(data);
+        return R.ok(data);
     }
 
     @Override
     @DeleteMapping("/{id}")
     public R<Boolean> delete(@PathVariable Long id) {
-        return super.delete(id);
+        roleService.deleteRole(id);
+        return R.ok(true);
     }
 }

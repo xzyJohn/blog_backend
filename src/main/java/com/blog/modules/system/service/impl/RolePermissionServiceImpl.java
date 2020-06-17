@@ -18,4 +18,11 @@ import javax.annotation.Resource;
 @Transactional
 public class RolePermissionServiceImpl extends BaseServiceImpl<RolePermission> implements RolePermissionService {
 
+    @Resource
+    RolePermissionMapper rolePermissionMapper;
+
+    @Override
+    public int deleteByRoleId(Long id) {
+        return rolePermissionMapper.deleteByRoleId(id);
+    }
 }

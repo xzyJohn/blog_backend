@@ -10,5 +10,10 @@ import com.blog.modules.base.service.MyService;
  * @since 2020-06-12
  */
 public interface RolePermissionService extends MyService<RolePermission> {
-
+    /**
+     * 根据角色id删除数据
+     * @param id
+     * @return
+     */
+    int deleteByRoleId(Long id);
 }

@@ -25,4 +25,8 @@
         role_id, permission_id
     </sql>
 
+    <delete id="deleteByRoleId">
+        DELETE FROM tbl_role_permission WHERE role_id =  #{id}
+    </delete>
+
 </mapper>
